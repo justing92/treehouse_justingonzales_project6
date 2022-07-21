@@ -5,6 +5,7 @@ const overlay = document.getElementById('overlay');
 const ul = document.querySelector('#phrase ul');
 const guesses = document.querySelector('.tries');
 let li = document.querySelectorAll('li');
+const h2 = document.getElementsByClassName('title');
 
 let missed = 0;
 
@@ -82,6 +83,7 @@ function checkLetter(guess) {
         wrongGuess.style.transition = "all .7s ease.in.out";
         missed++;
     }
+    checkWin();
 }
 
 // check win or lost
@@ -93,8 +95,17 @@ function checkWin() {
     if (shownLetters.length === letters.length) {
         overlay.className = 'win';
         overlay.style.display = 'flex';
+        startGame.textContent = "Play Again?";
+        startGame.addEventListener ('click', () => {
+            location.reload();  
+        });
     } else if (missed >= 5) {
-        overlay.className = 'lost';
+        overlay.className = 'lose';
         overlay.style.display = 'flex';
+        startGame.textContent = "Try Again?";
+        startGame.addEventListener ('click', () => {
+            location.reload();  
+        });
     }
 }
+
