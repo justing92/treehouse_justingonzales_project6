@@ -95,6 +95,7 @@ function checkWin() {
     if (shownLetters.length === letters.length) {
         overlay.className = 'win';
         overlay.style.display = 'flex';
+        overlay.children[0].textContent = "You Did It! Congrats!"
         startGame.textContent = "Play Again?";
         startGame.addEventListener ('click', () => {
             location.reload();  
@@ -102,6 +103,7 @@ function checkWin() {
     } else if (missed >= 5) {
         overlay.className = 'lose';
         overlay.style.display = 'flex';
+        overlay.children[0].textContent = "Oh No! You Lost!"
         startGame.textContent = "Try Again?";
         startGame.addEventListener ('click', () => {
             location.reload();  
